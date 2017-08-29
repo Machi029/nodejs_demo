@@ -1,0 +1,42 @@
+extends layout
+
+block content
+
+    div(class="header") MemberList
+
+    form(method="POST", action="/add", id="inputForm")
+        table
+            tr
+                th
+                th(class="item") name
+                th(class="item") company
+                th(class="item") mail
+            tr
+                th
+                    input(type="submit", value="add",)
+                td
+                    input(type="text", name="name", id="name")
+                td
+                    input(type="text", name="company", id="company")
+                td
+                    input(type="text", name="mail", id="mail")
+    p
+    form(method="POST", action="/del", id="deleteForm")
+        table
+            thead
+                tr
+                    th
+                        input(type="submit", value="delete")
+                    th(class="item") name
+                    th(class="item") company
+                    th(class="item") mail
+            tbody
+                each val in data
+                    tr
+                        th
+                            input(type="checkbox", name="_id", value="#{val._id}")
+                        td= val.name
+                        td= val.company
+                        td= val.mail
+
+    p
